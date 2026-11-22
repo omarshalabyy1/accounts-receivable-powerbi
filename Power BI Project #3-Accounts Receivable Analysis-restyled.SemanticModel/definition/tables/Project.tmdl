@@ -1,0 +1,64 @@
+/// One row per project with its managing director and department; the department > MD > project hierarchy.
+table Project
+	lineageTag: bf3fbf4d-5e45-483a-a666-484a9c7597c1
+
+	column 'Project Key'
+		dataType: string
+		isHidden
+		lineageTag: 918c1797-a1a7-4b01-898a-94effaa503d6
+		summarizeBy: none
+		sourceColumn: [Project Key]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Department'
+		dataType: string
+		lineageTag: a9c122b9-7436-48cd-a121-bd3d1748733e
+		summarizeBy: none
+		sourceColumn: [Project Department]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project MD'
+		dataType: string
+		lineageTag: 47495b66-89ca-4a61-8dd7-38bfc0db5de1
+		summarizeBy: none
+		sourceColumn: [Project MD]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Code'
+		dataType: string
+		lineageTag: cd0dddc2-2fa9-4df2-8413-907911ffff57
+		summarizeBy: none
+		sourceColumn: [Project Code]
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Project Hierarchy'
+		lineageTag: c0a68f85-80e4-474b-9ce9-855d391e3242
+
+		level 'Project Department'
+			lineageTag: 64228ad5-dc82-40df-bc0a-0271f60617b1
+			column: 'Project Department'
+
+		level 'Project MD'
+			lineageTag: 1eaf7ea4-5033-4d3f-8495-0906ba165763
+			column: 'Project MD'
+
+		level 'Project Code'
+			lineageTag: 190f1cd5-58ef-46b3-b33e-c1f0d5a403a7
+			column: 'Project Code'
+
+	partition Project = calculated
+		mode: import
+		source =
+				DISTINCT (
+				    SELECTCOLUMNS (
+				        'Entity Name (Data)',
+				        "Project Key", 'Entity Name (Data)'[Project Key],
+				        "Project Department", 'Entity Name (Data)'[Project Department],
+				        "Project MD", 'Entity Name (Data)'[Project MD],
+				        "Project Code", 'Entity Name (Data)'[Project Code]
+				    )
+				)

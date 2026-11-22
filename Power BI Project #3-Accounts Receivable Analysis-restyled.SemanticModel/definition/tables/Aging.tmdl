@@ -1,0 +1,49 @@
+/// Fixed ageing bands (days past due) and their risk label; sorted by the band order.
+table Aging
+	lineageTag: 826fc6e7-1b0d-4ba4-b865-93184db4ebe7
+
+	column 'Aging Bucket'
+		dataType: string
+		lineageTag: f275c866-59ad-460d-8760-9d20de63c1de
+		summarizeBy: none
+		sourceColumn: [Aging Bucket]
+		sortByColumn: 'Aging Bucket Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Aging Analysis'
+		dataType: string
+		lineageTag: f54010b2-27c9-4f36-a7d6-cf003987b1fa
+		summarizeBy: none
+		sourceColumn: [Aging Analysis]
+		sortByColumn: 'Aging Bucket Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Aging Bucket Sort'
+		dataType: int64
+		lineageTag: 3114fdd5-23ab-42fe-a32b-cea89ac93433
+		summarizeBy: none
+		sourceColumn: [Aging Bucket Sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Aging = calculated
+		mode: import
+		source =
+				DATATABLE (
+				    "Aging Bucket", STRING,
+				    "Aging Analysis", STRING,
+				    "Aging Bucket Sort", INTEGER,
+				    {
+				        { "No Due Date", "No Invoice", 0 },
+				        { "On Time", "On Time", 1 },
+				        { "1-30 Days Late", "Current", 2 },
+				        { "31-60 Days Late", "Past Due", 3 },
+				        { "61-90 Days Late", "Overdue", 4 },
+				        { "91-180 Days Late", "High Risk", 5 },
+				        { "181-365 Days Late", "Critical", 6 },
+				        { "Above 1 Year Late", "Bad Debt", 7 }
+				    }
+				)
+

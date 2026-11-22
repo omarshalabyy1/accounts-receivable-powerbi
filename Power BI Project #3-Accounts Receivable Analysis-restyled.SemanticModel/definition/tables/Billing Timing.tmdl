@@ -1,0 +1,35 @@
+/// When an invoice was raised against its estimated bill date: early, on time, delayed, or not yet invoiced.
+table 'Billing Timing'
+	lineageTag: 27976a6a-dd30-44d2-94e2-3b02757b41f1
+
+	column 'Timing'
+		dataType: string
+		lineageTag: e9602ca0-b1ff-4959-8882-46cd2068a155
+		summarizeBy: none
+		sourceColumn: [Timing]
+		sortByColumn: 'Timing Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Timing Sort'
+		dataType: int64
+		lineageTag: b1d98a1b-52ed-4ee6-a3de-e76d02decaed
+		summarizeBy: none
+		sourceColumn: [Timing Sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Billing Timing' = calculated
+		mode: import
+		source =
+				DATATABLE (
+				    "Timing", STRING,
+				    "Timing Sort", INTEGER,
+				    {
+				        { "Early", 1 },
+				        { "On Time", 2 },
+				        { "Delay", 3 },
+				        { "No Invoice", 4 },
+				        { "Unknown", 5 }
+				    }
+				)

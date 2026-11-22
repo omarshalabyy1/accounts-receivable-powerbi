@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "f94de2a682a418e86a58",
+  "displayName": "Project MD&Department",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "089694cbddd80ba99c5e",
+      "target": "b48c3b270b6b50eea808",
+      "type": "NoFilter"
+    },
+    {
+      "source": "089694cbddd80ba99c5e",
+      "target": "c4cc5ce260eb06ab4142",
+      "type": "NoFilter"
+    },
+    {
+      "source": "040a037788b5c8d6c65e",
+      "target": "b48c3b270b6b50eea808",
+      "type": "NoFilter"
+    },
+    {
+      "source": "040a037788b5c8d6c65e",
+      "target": "c4cc5ce260eb06ab4142",
+      "type": "NoFilter"
+    },
+    {
+      "source": "9aedfca99dd80b830e12",
+      "target": "c4cc5ce260eb06ab4142",
+      "type": "NoFilter"
+    },
+    {
+      "source": "9aedfca99dd80b830e12",
+      "target": "b48c3b270b6b50eea808",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d537daef14192c375981",
+      "target": "b54e32ba06059aa450a8",
+      "type": "NoFilter"
+    },
+    {
+      "source": "089694cbddd80ba99c5e",
+      "target": "b54e32ba06059aa450a8",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d537daef14192c375981",
+      "target": "b48c3b270b6b50eea808",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d537daef14192c375981",
+      "target": "c4cc5ce260eb06ab4142",
+      "type": "NoFilter"
+    }
+  ],
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'bg_project.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "bg_project.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#E9EDF1'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

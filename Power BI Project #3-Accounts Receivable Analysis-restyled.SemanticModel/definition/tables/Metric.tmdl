@@ -1,0 +1,50 @@
+table 'Metric'
+	lineageTag: ed1f0876-6d60-42e4-8ecc-e77a110e5e42
+
+	column 'Metric'
+		lineageTag: 4c81cced-f437-47d3-a860-abe90a65254c
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Metric Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Metric Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric Fields'
+		isHidden
+		lineageTag: a4d513ed-4768-4e38-a97b-be795dcfe412
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Metric Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric Order'
+		isHidden
+		formatString: 0
+		lineageTag: cf59a4f9-331f-4057-8ac0-5a9a1bf5a2f8
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Metric' = calculated
+		mode: import
+		source = ```
+				{
+				    ("Collected Amount", NAMEOF('_Measures'[Total Collected Amount]), 1),
+				    ("Outstanding Amount", NAMEOF('_Measures'[Total Outstanding Amount]), 0)
+				    
+				}
+				```
+
+	annotation PBI_Id = a5e7d3909ce34ec598d044220740fad9
+

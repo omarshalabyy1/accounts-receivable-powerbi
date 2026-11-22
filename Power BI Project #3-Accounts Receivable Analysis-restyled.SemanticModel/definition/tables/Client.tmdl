@@ -1,0 +1,20 @@
+/// One row per client; filters the fact by Client Name.
+table Client
+	lineageTag: fa58e4c9-b11f-44ff-8b68-4bd3fcf457e9
+
+	column 'Client Name'
+		dataType: string
+		lineageTag: 600b7f85-9ee8-410a-a22d-664317d259eb
+		summarizeBy: none
+		sourceColumn: [Client Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Client = calculated
+		mode: import
+		source =
+				FILTER (
+				    DISTINCT ( SELECTCOLUMNS ( 'Entity Name (Data)', "Client Name", 'Entity Name (Data)'[Client Name] ) ),
+				    NOT ISBLANK ( [Client Name] )
+				)
+

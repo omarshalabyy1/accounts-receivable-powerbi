@@ -1,0 +1,99 @@
+table _Measures
+	lineageTag: cfed1224-3762-4d4d-bce0-a98d8538cef2
+
+	/// Invoiced amount including VAT/GST, before credit notes.
+	measure 'Total Billed Amount' = SUM ( 'Entity Name (Data)'[Billed Amount] )
+		displayFolder: Billing
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a61203f7-d856-4b00-9aa7-6a0cee746108
+
+	/// Credit notes issued, including VAT/GST.
+	measure 'Total Credit Note Amount' = SUM ( 'Entity Name (Data)'[Credit Note Amount] )
+		displayFolder: Billing
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 9131379a-1bd3-421a-928f-7a1ee23e306f
+
+	/// Billed amount net of credit notes.
+	measure 'Total Actual Billing Amount' = [Total Billed Amount] - [Total Credit Note Amount]
+		displayFolder: Billing
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 294839df-182f-4ca6-8234-4c41cbe2ea17
+
+	/// Billing planned for the estimated bill date.
+	measure 'Total Planned Billing Amount' = SUM ( 'Entity Name (Data)'[Planned Billing Amount] )
+		displayFolder: Billing
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: ca5eabfb-e551-415a-b5bb-5793519d3a93
+
+	/// Number of distinct invoices in the current filter context.
+	measure 'Invoice Count' = DISTINCTCOUNTNOBLANK ( 'Entity Name (Data)'[Invoice Number] )
+		displayFolder: Billing
+		formatString: 0
+		lineageTag: 4dcc72a0-24e9-42ea-a906-31b37fc84d30
+
+	/// Cash received against invoices.
+	measure 'Total Collected Amount' = SUM ( 'Entity Name (Data)'[Collected Amount] )
+		displayFolder: Collections
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 70097cba-413a-4d1f-99d8-87f277683e6f
+
+	/// Amount billed and not yet collected.
+	measure 'Total Outstanding Amount' = SUM ( 'Entity Name (Data)'[Outstanding Amount] )
+		displayFolder: Collections
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: f4f06bc3-1a04-4b1b-ae12-fbf097ed9bc2
+
+	/// Collected amount as a share of actual billing.
+	measure 'Collection Efficiency' = DIVIDE ( [Total Collected Amount], [Total Actual Billing Amount] )
+		displayFolder: Collections
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 88d940b0-796e-48d1-bb48-00f8284bf82f
+
+	/// Cash by the date it was received (uses the inactive Receipt Date relationship); the other measures follow the invoice date.
+	measure 'Collected by Receipt Date' = CALCULATE ( [Total Collected Amount], USERELATIONSHIP ( 'Entity Name (Data)'[Receipt Date], 'Date'[Date] ) )
+		displayFolder: Collections
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 69869d77-ad66-42fd-be14-a9a8691f0e4e
+
+	/// Credit notes by the date they were issued (uses the inactive Credit Note Date relationship).
+	measure 'Credit Notes by Credit Note Date' = CALCULATE ( [Total Credit Note Amount], USERELATIONSHIP ( 'Entity Name (Data)'[Credit Note Date], 'Date'[Date] ) )
+		displayFolder: Collections
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: aa3991eb-df4a-4a92-a943-9899df89f4a5
+
+	/// Rank of each managing director by billed amount (1 = highest).
+	measure 'MD Billing Rank' = RANKX ( ALL ( Project[Project MD] ), [Total Billed Amount], , DESC )
+		displayFolder: Ranking
+		formatString: 0
+		lineageTag: b84c335f-8081-4f73-817e-240b912b103b
+
+	/// Rank of each managing director by outstanding amount (1 = highest).
+	measure 'MD Outstanding Rank' = RANKX ( ALL ( Project[Project MD] ), [Total Outstanding Amount], , DESC )
+		displayFolder: Ranking
+		formatString: 0
+		lineageTag: 66aa9e13-d847-4336-a280-858d450d57d4
+
+	/// Number of distinct projects in the current filter context.
+	measure 'Total Projects' = DISTINCTCOUNTNOBLANK ( 'Entity Name (Data)'[Project Key] )
+		displayFolder: Counts
+		formatString: 0
+		lineageTag: 9a65fab2-2739-4963-83d1-18be637764c2
+
+	/// Number of distinct managing directors in the current filter context.
+	measure 'Number of MDs' = DISTINCTCOUNT ( 'Entity Name (Data)'[Project MD] )
+		displayFolder: Counts
+		formatString: 0
+		lineageTag: 1a173318-a5bd-4bd0-ae8b-632966c5f4cb
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

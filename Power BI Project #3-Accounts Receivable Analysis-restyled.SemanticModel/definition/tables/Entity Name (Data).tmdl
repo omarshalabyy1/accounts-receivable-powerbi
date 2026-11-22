@@ -1,0 +1,319 @@
+table 'Entity Name (Data)'
+	lineageTag: 1d2280c4-f296-497d-9ee5-0912bbc9e87e
+
+	column 'Client Name'
+		dataType: string
+		isHidden
+		lineageTag: 25d0fbac-b1f7-4b23-8c0a-195bf33b7eb9
+		summarizeBy: none
+		sourceColumn: Client Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Code'
+		dataType: string
+		isHidden
+		lineageTag: 01c3df0a-ee91-4cc0-9eba-de1bc97263a8
+		summarizeBy: none
+		sourceColumn: Project Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Estimated Bill Date'
+		dataType: dateTime
+		isHidden
+		formatString: mm/dd/yyyy
+		lineageTag: 6d2c073f-1961-4fe3-9738-246dcbe19d0c
+		summarizeBy: none
+		sourceColumn: Estimated Bill Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Planned Billing Amount'
+		dataType: double
+		isHidden
+		lineageTag: 8fa0b55a-6ac0-45d5-a997-2588debc22e8
+		summarizeBy: none
+		sourceColumn: Planned Billing Amount (RC)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Invoice Number'
+		dataType: string
+		lineageTag: 654d223a-7ac7-4967-a759-126d265236cb
+		summarizeBy: none
+		sourceColumn: Invoice Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Date'
+		dataType: dateTime
+		isHidden
+		formatString: mm/dd/yyyy
+		lineageTag: d6949262-c79c-41d4-a9e9-6c0928c3a58b
+		summarizeBy: none
+		sourceColumn: Invoice Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Payment Terms Text'
+		dataType: string
+		isHidden
+		lineageTag: 7c44ee60-40da-4d22-9364-14c649b5147e
+		summarizeBy: none
+		sourceColumn: Payment Terms Text
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Billed Amount'
+		dataType: double
+		isHidden
+		lineageTag: 4f916826-b158-408c-bae8-2faa5fc2de3c
+		summarizeBy: none
+		sourceColumn: Billed Amount (including VAT/GST)(RC)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Credit Note Number'
+		dataType: string
+		isHidden
+		lineageTag: 92682df2-b944-4c08-ab9e-e86940538c9a
+		summarizeBy: none
+		sourceColumn: Credit Note Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Credit Note Date'
+		dataType: dateTime
+		isHidden
+		formatString: mm/dd/yyyy
+		lineageTag: 453efa7e-bf93-447f-b1c2-626360a69617
+		summarizeBy: none
+		sourceColumn: Credite Note Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Credit Note Amount'
+		dataType: double
+		isHidden
+		lineageTag: 5ea14290-2c5f-46f0-ad15-7e96af45f411
+		summarizeBy: none
+		sourceColumn: Credit Note Amount  (including VAT/GST) (RC)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Receipt Number'
+		dataType: string
+		isHidden
+		lineageTag: 08f2973a-66f2-4df5-b15c-1749aa8abb4e
+		summarizeBy: none
+		sourceColumn: Receipt Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Receipt Date'
+		dataType: dateTime
+		isHidden
+		formatString: mm/dd/yyyy
+		lineageTag: eafd7bc9-85de-4ad6-ac93-682e1859e0c3
+		summarizeBy: none
+		sourceColumn: Receipt Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Collected Amount'
+		dataType: double
+		isHidden
+		lineageTag: 88dd535f-8643-462d-8ad7-db029c2f2a82
+		summarizeBy: none
+		sourceColumn: Total Collected Amount (including VAT/GST) (RC)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Outstanding Amount'
+		dataType: double
+		isHidden
+		lineageTag: ed9c459c-e80c-4798-8b4b-d3ec6258c871
+		summarizeBy: none
+		sourceColumn: Total Outstanding Amount (including VAT/GST) (RC)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Project MD'
+		dataType: string
+		isHidden
+		lineageTag: 5463792f-ea63-40b7-9b23-76f347deec8a
+		summarizeBy: none
+		sourceColumn: Project MD
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Department'
+		dataType: string
+		isHidden
+		lineageTag: bc1c00bd-ff4c-4960-9a88-115e34c500b7
+		summarizeBy: none
+		sourceColumn: Project Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Days'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 152882f5-ab48-48f3-a60d-e923bddb6988
+		summarizeBy: none
+		sourceColumn: Payment Days after Invoice
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overdue Days' = ```
+			
+			VAR DueDate = 'Entity Name (Data)'[Invoice Date] + 'Entity Name (Data)'[Payment Days]
+			
+			VAR AdjustedDate = 
+			    IF(
+			        NOT(ISBLANK('Entity Name (Data)'[Receipt Date])), 
+			        'Entity Name (Data)'[Receipt Date], 
+			        IF(
+			            NOT(ISBLANK('Entity Name (Data)'[Credit Note Date])), 
+			            'Entity Name (Data)'[Credit Note Date], 
+			            TODAY()
+			        )
+			    )
+			
+			RETURN 
+			IF(
+			    OR(
+			        ISBLANK('Entity Name (Data)'[Invoice Date]), 
+			        ISBLANK('Entity Name (Data)'[Invoice Number])
+			    ), 
+			    BLANK(), 
+			    DATEDIFF(DueDate, AdjustedDate, DAY)
+			)
+			    
+			
+			```
+		isHidden
+		formatString: 0
+		lineageTag: 41c4b403-5484-4dd1-8c28-5e2e62513b21
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Aging Bucket' =
+			
+			SWITCH(
+			    TRUE(),
+			    ISBLANK('Entity Name (Data)'[Overdue Days]), "No Due Date",
+			     'Entity Name (Data)'[Overdue Days] <= 0, "On Time",
+			    'Entity Name (Data)'[Overdue Days]  <= 30, "1-30 Days Late",
+			     'Entity Name (Data)'[Overdue Days]  <= 60, "31-60 Days Late",
+			    'Entity Name (Data)'[Overdue Days]  <= 90, "61-90 Days Late",
+			    'Entity Name (Data)'[Overdue Days]  <= 180, "91-180 Days Late",
+			     'Entity Name (Data)'[Overdue Days]  <= 365, "181-365 Days Late",
+			     'Entity Name (Data)'[Overdue Days]  > 365, "Above 1 Year Late"
+			)
+		isHidden
+		lineageTag: 0269db4a-1cb9-412e-aa6c-b3daac3918e3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Entity Name'
+		dataType: string
+		isHidden
+		lineageTag: 06336e2a-03ab-4ea2-9ec2-dcff9ca2f6bd
+		summarizeBy: none
+		sourceColumn: Entity Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Billing Delay Days' = ```
+			IF (
+			    ISBLANK ( 'Entity Name (Data)'[Invoice Date] ),
+			    BLANK (),
+			    DATEDIFF ( 'Entity Name (Data)'[Estimated Bill Date], 'Entity Name (Data)'[Invoice Date], DAY )
+			)
+			```
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 919be369-afb9-405e-b568-d9f010e591d1
+		summarizeBy: none
+
+	column 'Billing Timing' = ```
+			VAR _Delay = 'Entity Name (Data)'[Billing Delay Days]
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        ISBLANK ( 'Entity Name (Data)'[Invoice Date] ), "No Invoice",
+			        ISBLANK ( _Delay ), "Unknown",
+			        _Delay < 0, "Early",
+			        _Delay = 0, "On Time",
+			        "Delay"
+			    )
+			```
+		dataType: string
+		isHidden
+		lineageTag: 39215964-96a5-44e1-a9a9-b731334c624a
+		summarizeBy: none
+
+	column 'Project Key' = ```
+			'Entity Name (Data)'[Project Code] & "|" & 'Entity Name (Data)'[Project MD] & "|" & 'Entity Name (Data)'[Project Department]
+			```
+		dataType: string
+		isHidden
+		lineageTag: ce5ca97f-dd07-46c1-8b96-dd8c86a42e5d
+		summarizeBy: none
+
+	partition 'Entity Name (Data)' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\benze\Desktop\Internship\Project-2 AR\AR - Project 2 (1).xlsx"), null, false),
+				    Data_sheet = Source{[Item="Data",Kind="Sheet"]}[Data],
+				    FilterNullAndWhitespace = each List.Select(_, each _ <> null and (not (_ is text) or Text.Trim(_) <> "")),
+				    #"Removed Bottom Rows" = Table.RemoveLastN(Data_sheet, each try List.IsEmpty(List.Skip(FilterNullAndWhitespace(Record.FieldValues(_)), 1)) otherwise false),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Bottom Rows", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Invoice Number", type text}}),
+				    #"Inserted Text Before Delimiter" = Table.AddColumn(#"Changed Type", "Text Before Delimiter", each Text.BeforeDelimiter([Payment Terms Text], " "), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Text Before Delimiter",{{"Text Before Delimiter", "Payment Days"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"Payment Days", Int64.Type}, {"Estimated Bill Date", type date}, {"Planned Billing Amount (RC)", type number}, {"Invoice Date", type date}, {"Billed Amount (including VAT/GST)(RC)", type number}}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Changed Type1",{{"Credite Note Date", type date}, {"Total Collected Amount (including VAT/GST) (RC)", type number}, {"Credit Note Amount  (including VAT/GST) (RC)", type number}, {"Receipt Date", type date}, {"Total Outstanding Amount (including VAT/GST) (RC)", type number}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type2", each true),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Filtered Rows",{{"Payment Days", "Payment Days after Invoice"}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Renamed Columns1", each true)
+				in
+				    #"Filtered Rows1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

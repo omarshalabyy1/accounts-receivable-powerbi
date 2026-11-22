@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Power BI Project #3-Accounts Receivable Analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c0d7b027-536a-442f-aadf-a7e66486f97f"
+  }
+}

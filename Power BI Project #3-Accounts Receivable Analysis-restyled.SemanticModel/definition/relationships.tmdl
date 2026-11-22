@@ -1,0 +1,38 @@
+relationship 5df4696e-4d4f-4cfc-80d5-dc1430260290
+	isActive: false
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Entity Name (Data)'.'Estimated Bill Date'
+	toColumn: Date.Date
+
+relationship 0dc17118-0b9f-4778-a87d-1d0ff7a3032b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Entity Name (Data)'.'Invoice Date'
+	toColumn: Date.Date
+
+relationship dedb62df-b7e8-413e-8277-94e1a546f455
+	isActive: false
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Entity Name (Data)'.'Credit Note Date'
+	toColumn: Date.Date
+
+relationship 2ef15526-6bcb-4ca7-96ad-f730f9dbda17
+	isActive: false
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Entity Name (Data)'.'Receipt Date'
+	toColumn: Date.Date
+
+relationship edac1ab2-1a16-462d-b894-fd590e41dda4
+	fromColumn: 'Entity Name (Data)'.'Client Name'
+	toColumn: Client.'Client Name'
+
+relationship a7084fdb-553f-4275-9471-2ebb769f13d2
+	fromColumn: 'Entity Name (Data)'.'Aging Bucket'
+	toColumn: Aging.'Aging Bucket'
+
+relationship d355e99a-f834-4223-b190-c3f154d901a1
+	fromColumn: 'Entity Name (Data)'.'Project Key'
+	toColumn: Project.'Project Key'
+
+relationship d5e4b8c0-da4b-400d-ad39-1dd3ef0d3323
+	fromColumn: 'Entity Name (Data)'.'Billing Timing'
+	toColumn: 'Billing Timing'.Timing
